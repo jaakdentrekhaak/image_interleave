@@ -1,9 +1,17 @@
 import cv2
 import numpy as np
+import tkinter, tkinter.filedialog
 
-# path to image
-path1 = r'/home/jaak/Pictures/test1.jpeg'
-path2 = r'/home/jaak/Pictures/test2.jpeg'
+# Open tkinter filedialog window to select paths
+root = tkinter.Tk()
+root.withdraw()
+
+print('Select first image')
+path1 = tkinter.filedialog.askopenfilename()
+print('Select second image')
+path2 = tkinter.filedialog.askopenfilename()
+
+root.destroy()
 
 # load images
 img1 = cv2.imread(path1)
