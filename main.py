@@ -11,10 +11,10 @@ img2 = cv2.imread(path2)
 
 def interleave(first, second):
     """
-    Removes all the odd pixels in each row by setting these entries to zero.
+    Takes pixels in checkerboard pattern from second image to replace the pixels from the first image.
     :param first: numpy array that represents a matrix of pixels from an image
     :param second: numpy array that represents a matrix of pixels from an image the same size as the first image (doesn't fail if not the case)
-    :return: numpy array that represents a matrix of pixels from an image, but some pixels have been removed
+    :return: numpy array that represents a matrix of pixels from an image, but pixels have been interleaved in checkerboard pattern
     """
     # get image size
     height = len(first)
@@ -23,10 +23,10 @@ def interleave(first, second):
     # create copy of the original array
     res = np.array(first, copy=True)
 
-    # set the odd pixels equal to the pixels of the second image
+    # set the pixels equal to the pixels of the second image in checkerboard pattern 
     for row in range(height):
         for col in range(width):
-            if (col % 2 != 0):
+            if ((col + row) % 2 != 0):
                 res[row][col] = second[row][col]
     
     return res
